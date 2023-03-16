@@ -1,6 +1,6 @@
 name: Tests PHP avec Infection
 run-name: Execution des tests PHP
-on:[push]
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
