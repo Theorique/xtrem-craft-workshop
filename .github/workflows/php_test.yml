@@ -19,4 +19,4 @@ jobs:
         composer install --no-progress --no-suggest
 
     - name: Run Infection mutation testing
-      run: vendor/bin/infection
+      run: vendor/bin/infection --configuration=infection.json --only-covered --tests-folder=./php
