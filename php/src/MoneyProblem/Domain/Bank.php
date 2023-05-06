@@ -17,8 +17,21 @@ class Bank
         $this->rates = $rates;
     }
 
+    public function getPivotCurrency() {
+        return $this->pivotCurrency;
+    }
+
+    /**
+     * @throws InvalidExchangeRateException
+     */
     public function addRate(Currency $to, float $rate): Bank
     {
+        if($to == $this->pivotCurrency) {
+            throw new InvalidExchangeCurrencyException(true);
+        }
+        if($rate <= 0) {
+            throw new InvalidExchangeRateException();
+        }
         $this->rates[$to->getValue()] = $rate;
         $newBank = new Bank($this->pivotCurrency);
         $newBank->setRates($this->rates);
